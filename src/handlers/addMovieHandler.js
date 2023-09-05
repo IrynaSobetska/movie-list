@@ -47,7 +47,7 @@ const addMovieHandler = async () => {
             createWarningMessage(dom.warningContainer);
             return;
         }
-        await addMovie();
+        await addMovie({ title: dom.title.value, src: dom.src.value });
     }
 };
 

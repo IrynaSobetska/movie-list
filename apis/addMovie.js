@@ -1,14 +1,14 @@
 import data from '../src/data.js';
 import dom from '../src/dom.js';
 
-const addMovie = async () => {
+const addMovie = async (bodyData) => {
     try {
         const res = await fetch(data.baseUrl, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({ title: dom.title.value, src: dom.src.value })
+            body: JSON.stringify(bodyData)
         });
         if (!res.ok) {
             throw new Error(
