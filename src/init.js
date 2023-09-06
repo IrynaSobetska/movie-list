@@ -11,7 +11,4 @@ window.addEventListener('load', () => {
 
     // Hide the loading animation
     loading.style.display = 'none';
-
-    // Show the website content
-    content.style.display = 'block';
 });
