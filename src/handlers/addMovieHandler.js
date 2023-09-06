@@ -62,6 +62,10 @@ const addMovieHandler = async () => {
 
         await addMovie({ title: titleValue, src: srcValue });
     }
+
+    // clean inputs
+    dom.title.innerHTML = '';
+    dom.src.innerHTML = '';
 };
 
 export default addMovieHandler;
