@@ -19,6 +19,7 @@ const createMovie = (movieData) => {
     editBtn.innerText = 'Edit';
     editBtn.id = movieData.id;
     editBtn.addEventListener('click', () => {
+        container.classList.add('selected');
         editMovieHandler(id);
     });
 

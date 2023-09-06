@@ -3,6 +3,7 @@ import dom from '../dom.js';
 import createWarningMessage from '../components/createWarningMessage.js';
 import addMovie from '../../apis/addMovie.js';
 import editMovie from '../../apis/editMovie.js';
+import createMovie from '../components/createMovie.js';
 
 const addMovieHandler = async () => {
     const createWarningMessageExist = document.querySelector('.warning');
@@ -33,10 +34,16 @@ const addMovieHandler = async () => {
         }
         const movieId = data.movieId;
 
+        const movieDom = document.querySelector('.selected');
+        movieDom.querySelector('img').src = srcValue;
+        movieDom.querySelector('img').alt = titleValue;
+        movieDom.querySelector('h3').innerHTML = titleValue;
+
         await editMovie(movieId, titleData);
 
         data.editMovie = false;
         dom.addBtn.textContent = 'Add movie';
+        movieDom.classList.remove('selected');
     } else {
         const titleValue = dom.title.value;
         const srcValue = dom.src.value;
@@ -47,7 +54,13 @@ const addMovieHandler = async () => {
             createWarningMessage(dom.warningContainer);
             return;
         }
-        await addMovie({ title: dom.title.value, src: dom.src.value });
+        const movieDom = createMovie({
+            title: titleValue,
+            src: srcValue
+        });
+        dom.container.prepend(movieDom);
+
+        await addMovie({ title: titleValue, src: srcValue });
     }
 };
 
