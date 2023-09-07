@@ -1,5 +1,4 @@
 import data from '../src/data.js';
-import dom from '../src/dom.js';
 
 const addMovie = async (bodyData) => {
     try {
